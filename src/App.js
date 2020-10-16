@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import ToDoItem from './components/ToDoItem'
 
-function App() {
+const todoItems = [
+
+  {
+      name: "task 1",
+      done: false,
+      id: 0,
+  },
+  {
+      name: "task 2",
+      done: false,
+      id: 1,
+  },
+  {
+      name: "task 3",
+      done: false,
+      id: 2,
+  },
+  {
+      name: "task 4",
+      done: false,
+      id: 3,
+  },
+  {
+      name: "task 5",
+      done: false,
+      id: 4,
+  },
+]
+
+const App = () => {
+  
+  const arrayOfItems = todoItems.map(item => <ToDoItem todoName={item.name}/>)
+  console.log(arrayOfItems)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>ToDo List</h1>
+      <form>
+        {arrayOfItems}
+      </form>
     </div>
   );
 }
 
-export default App;
+export default App
