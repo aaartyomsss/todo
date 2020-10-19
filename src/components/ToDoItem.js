@@ -1,11 +1,12 @@
 import React from 'react'
 
-const ToDoItem  = ({todoName}) => {
-    return (
+const ToDoItem  = ({todoName, completeToDo, i, changeImportance, important}) => {
+    
+        return (
         <div>
-            <label><input type="checkbox"/>{todoName}</label>
-        </div>
-    )
+            <li style={{color: important ? 'red' : 'green'}}>{todoName}<button onClick={() => completeToDo(i)}>Done!</button><button onClick={() => changeImportance(i)}>{important ? 'Regular' : 'Important!'}</button></li>
+        </div>)
+    
 }
 
 export default ToDoItem
