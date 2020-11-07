@@ -25,7 +25,7 @@ const App = () => {
   }, [])
 
 
-  // TODO Fix adding functionality
+  // Adding todos
   const addToDo = (event) => {
     event.preventDefault()
     const todo = {
@@ -37,7 +37,9 @@ const App = () => {
     .addTodo(todo)
     .then(serverTodo => {
       console.log(serverTodo)
-      setToDos(todos.concat(serverTodo))})
+      setToDos(todos.concat(serverTodo))
+      setToDoValue('')
+    })
     .catch(e => console.log(e))
 
     console.log(todos)
@@ -45,17 +47,23 @@ const App = () => {
 
   }
 
-
+  // Completing / Deleting todo
+  // TODO Add functionality for deleting todo
   const completeToDo = (i) => {
     const newToDos = [...todos]
     newToDos.splice(i, 1)
     setToDos(newToDos)
   }
 
+  // Changing importance of todo
   const changeImportance = (i) => {
     const newToDos = [...todos]
-    todos[i].important = !todos[i].important
-    setToDos(newToDos)
+    newToDos[i].important = !newToDos[i].important
+    nodeServices.updateTodo(newToDos[i].id, newToDos[i])
+      .then(res => {
+        console.log(res)
+        setToDos(newToDos)
+      })
 
   }
   

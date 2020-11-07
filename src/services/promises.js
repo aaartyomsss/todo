@@ -8,7 +8,7 @@ const getAll = () => {
 }
 
 const addTodo = newTodo => {
-    const req = axios.put(todoUrl, newTodo)
+    const req = axios.post(todoUrl, newTodo)
     return req.then(res => res.data)
 }
 
