@@ -2,22 +2,24 @@ import axios from 'axios'
 const todoUrl = 'http://localhost:3001/todos'
 
 
-const getAll = () => {
-    const req = axios.get(todoUrl)
-    return req.then(res => res.data)
+const getAll = async () => {
+    const res = await axios.get(todoUrl)
+    return res.data
 }
 
-const addTodo = newTodo => {
-    const req = axios.post(todoUrl, newTodo)
-    return req.then(res => res.data)
+const addTodo = async newTodo => {
+    const res =  await axios.post(todoUrl, newTodo)
+    return res.data
 }
 
-const deleteTodo = id => {
-    return axios.delete(`${todoUrl}/${id}`)
+const deleteTodo = async id => {
+    const res = await axios.delete(`${todoUrl}/${id}`)
+    return res.data
 }
 
-const updateTodo = (id, newTodo) => {
-    return axios.patch(`${todoUrl}/${id}`, newTodo)
+const updateTodo = async (id, newTodo) => {
+    const res = await axios.patch(`${todoUrl}/${id}`, newTodo)
+    return res.data
 }
 
 export default {getAll, addTodo, deleteTodo, updateTodo}
