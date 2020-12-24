@@ -1,8 +1,11 @@
-import React , {useState, useEffect} from 'react'
+import React , { useEffect } from 'react'
 import ToDoList from './components/ToDoList'
 import { useDispatch } from 'react-redux'
 import { initialState } from './reducers/todoReducer'
 import ToDoForm from './components/ToDoForm'
+import "antd/dist/antd.css"
+import { PageHeader } from 'antd'
+import './Styles.css'
 
 
 
@@ -17,7 +20,7 @@ const App = () => {
   
   return (
     <div>
-      <h1>ToDo List</h1>
+      <PageHeader className='site-page-header' title='Todo List' subTitle='Created by AS 2020 UH'/>
       <ToDoForm/>
       <ToDoList/>
     </div>

@@ -34,8 +34,8 @@ export const initialState = () => {
 }
 
 export const completeTodo = (id) => {
-    return async dispatch => {
-        const todo = await todoServices.deleteTodo(id)
+    return async dispatch => { // eslint-disable-next-line
+        const todo = await todoServices.deleteTodo(id) 
         dispatch({
             type: 'COMPLETE',
             data: { id }
@@ -45,6 +45,7 @@ export const completeTodo = (id) => {
 
 export const changeImportance = (id, newTodo) => {
     return async dispatch => {
+        // eslint-disable-next-line
         const todo = await todoServices.updateTodo(id, newTodo)
         dispatch({
             type: 'CHANGE_IMPORTANCE',

@@ -1,27 +1,49 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { addTodo } from '../reducers/todoReducer'
+import { Form, Input, Button } from 'antd'
+
 const ToDoForm = () => {
-    
+
     const dispatch = useDispatch()
 
-    const addToDo = (event) => {
-        event.preventDefault()
-        const todoText = event.target.todo.value
+    const addToDo = (value) => {
+        console.log(value)
+        const todoText = value.todo
         const todo = {
-          todo: todoText,
-          done: false, 
+            todo: todoText,
+            done: false,
         }
         dispatch(addTodo(todo))
-        event.target.todo.value = ''
+        value = ''
     }
-    
+
+    const layout = {
+        labelCol: {
+            span: 2,
+        },
+        wrapperCol: {
+            span: 14,
+        },
+    }
+
+    const tailLayout = {
+        wrapperCol: {
+            offset: 2,
+            span: 14,
+        },
+    }
+
     return (
         <div>
-            <form onSubmit={addToDo}>
-                <input name="todo"/>
-                <button type="submit">Add ToDo</button>
-            </form>
+            <Form onFinish={addToDo} {...layout}>
+                <Form.Item label='Enter todo' name='todo'>
+                    <Input />
+                </Form.Item>
+                <Form.Item {...tailLayout}>
+                    <Button type="primary" htmlType="submit">Add Todo</Button>
+                </Form.Item>
+            </Form>
         </div>
 
     )
