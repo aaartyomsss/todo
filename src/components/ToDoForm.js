@@ -2,8 +2,11 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { addTodo } from '../reducers/todoReducer'
 import { Form, Input, Button } from 'antd'
+import { formatCountdown } from 'antd/lib/statistic/utils'
+import { useForm } from 'antd/lib/form/Form'
 
 const ToDoForm = () => {
+    const [form] = useForm()
 
     const dispatch = useDispatch()
 
@@ -15,32 +18,16 @@ const ToDoForm = () => {
             done: false,
         }
         dispatch(addTodo(todo))
-        value = ''
-    }
-
-    const layout = {
-        labelCol: {
-            span: 2,
-        },
-        wrapperCol: {
-            span: 14,
-        },
-    }
-
-    const tailLayout = {
-        wrapperCol: {
-            offset: 2,
-            span: 14,
-        },
+        form.resetFields()
     }
 
     return (
-        <div>
-            <Form onFinish={addToDo} {...layout}>
-                <Form.Item label='Enter todo' name='todo'>
-                    <Input />
+        <div style={{margin: 10}}>
+            <Form form={form} onFinish={addToDo}>
+                <Form.Item name='todo'>
+                    <Input placeholder={"Enter todo"}/>
                 </Form.Item>
-                <Form.Item {...tailLayout}>
+                <Form.Item>
                     <Button type="primary" htmlType="submit">Add Todo</Button>
                 </Form.Item>
             </Form>

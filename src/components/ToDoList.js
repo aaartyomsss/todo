@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector} from 'react-redux'
 import ToDoItem from './ToDoItem'
 import { completeTodo, changeImportance } from '../reducers/todoReducer'
+import { Row } from 'antd'
 
 const ToDoList = () => {
     const dispatch = useDispatch()
@@ -33,9 +34,9 @@ const ToDoList = () => {
     
     return (
         <div>
-            <ul>
-                {arrayOfItems}
-            </ul>
+            <Row gutter={[8, 16]}>
+            {arrayOfItems}
+            </Row>
         </div>
     )
 }
