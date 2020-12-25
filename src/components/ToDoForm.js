@@ -2,7 +2,6 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { addTodo } from '../reducers/todoReducer'
 import { Form, Input, Button } from 'antd'
-import { formatCountdown } from 'antd/lib/statistic/utils'
 import { useForm } from 'antd/lib/form/Form'
 
 const ToDoForm = () => {
