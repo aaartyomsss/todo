@@ -2,10 +2,12 @@ import React from 'react'
 import { Form, Input, Button, message } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
 import loginServices from '../services/loginServices'
+import { useHistory } from 'react-router-dom'
 
 const SignUp = () => {
 
-
+    const history = useHistory()
+    
     //Form styles
     const layout = {
         labelCol: { span: 6 },
@@ -49,6 +51,7 @@ const SignUp = () => {
             const response = await loginServices.register(newUser)
             console.log(response)
             form.resetFields()
+            history.push('/success')
         } catch (e) {
             console.log(e.message)
             if (e.message === `Request failed with status code 400`) {

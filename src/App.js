@@ -7,6 +7,7 @@ import "antd/dist/antd.css"
 import { PageHeader } from 'antd'
 import './Styles.css'
 import Home from './components/Home'
+import { Route } from 'react-router-dom'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -21,12 +22,15 @@ const App = () => {
   return (
     <div>
       {user === '' 
-        ? <Home/> 
-        : <div>
+        ? <Route path='/'><Home/></Route> 
+        : <Route>
+          <div>
             <PageHeader title='Todo List' subTitle='Created by AS 2020 UH'/>
             <ToDoForm/>
             <ToDoList/>
-          </div>}
+          </div>
+          </Route>
+          }
     </div>
   );
 }
