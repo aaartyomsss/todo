@@ -3,8 +3,9 @@ import SignUp from './SignUp'
 import { Route, Switch, Link, useHistory } from 'react-router-dom'
 import { Button } from 'antd'
 import Success from './Success'
+import Login from './Login'
 
-const Home = () => {
+const Home = ({ setUser }) => {
 
     const history = useHistory()
 
@@ -22,7 +23,7 @@ const Home = () => {
                 </Route>
 
                 <Route path='/login'>
-                    <div></div>
+                    <Login setUser={setUser}/>
                 </Route>
 
                 <Route path='/success'>

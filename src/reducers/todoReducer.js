@@ -1,7 +1,7 @@
 import todoServices from '../services/promises'
 
 const todoReducer = (state = [], action) => {
-    switch(action.type){
+    switch (action.type) {
         case 'INIT':
             return action.data
         case 'ADD':
@@ -13,9 +13,9 @@ const todoReducer = (state = [], action) => {
             console.log(id)
             const todoToChange = state.find(n => n.id === id)
             console.log(todoToChange)
-            const changedTodo = { 
-                ...todoToChange, 
-                important: !todoToChange.important 
+            const changedTodo = {
+                ...todoToChange,
+                important: !todoToChange.important
             }
             return state.map(todo => todo.id !== action.data.id ? todo : changedTodo)
         default:
@@ -23,19 +23,16 @@ const todoReducer = (state = [], action) => {
     }
 }
 
-export const initialState = () => {
-    return async dispatch => {
-        const todos = await todoServices.getAll()
-        dispatch({
-            type: 'INIT',
-            data: todos
-        })
+export const initialState = (todos) => {
+    return {
+        type: 'INIT',
+        data: []
     }
 }
 
 export const completeTodo = (id) => {
     return async dispatch => { // eslint-disable-next-line
-        const todo = await todoServices.deleteTodo(id) 
+        const todo = await todoServices.deleteTodo(id)
         dispatch({
             type: 'COMPLETE',
             data: { id }

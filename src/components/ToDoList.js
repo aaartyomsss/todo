@@ -6,8 +6,8 @@ import { Row } from 'antd'
 
 const ToDoList = () => {
     const dispatch = useDispatch()
-    const todos = useSelector(state => state.todos)
-
+    const todos = useSelector(state => state)
+    console.log(todos)
     const handleImportance = (id) => {
         const todoToChange = todos.find(n => n.id === id)
         const changedTodo = { 

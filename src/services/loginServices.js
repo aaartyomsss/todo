@@ -9,7 +9,6 @@ const login = async (creds) => {
 
 const register = async (user) => {
     const res = await axios.post(usersUrl, user)
-    console.log(res)
     return res
 }
 
