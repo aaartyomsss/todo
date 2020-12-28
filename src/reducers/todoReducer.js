@@ -3,7 +3,10 @@ import todoServices from '../services/promises'
 const todoReducer = (state = [], action) => {
     switch (action.type) {
         case 'INIT':
-            return action.data
+            console.log('user id', action.data.userId)
+            console.log('Passed todos', action.data.todos)
+            const initial = action.data.todos.filter(todo => todo.user === action.data.userId)
+            return initial
         case 'ADD':
             return [...state].concat(action.data)
         case 'COMPLETE':
@@ -18,15 +21,20 @@ const todoReducer = (state = [], action) => {
                 important: !todoToChange.important
             }
             return state.map(todo => todo.id !== action.data.id ? todo : changedTodo)
+        case 'RESET':
+            return action.data
         default:
             return state
     }
 }
 
-export const initialState = (todos) => {
+export const initialState = (todos, userId) => {
     return {
         type: 'INIT',
-        data: []
+        data: {
+            todos: todos,
+            userId: userId
+        }
     }
 }
 
@@ -58,6 +66,13 @@ export const addTodo = (obj) => {
             type: 'ADD',
             data: todo
         })
+    }
+}
+
+export const resetState = () => {
+    return {
+        type: 'RESET',
+        data: []
     }
 }
 
