@@ -19,6 +19,10 @@ const Home = ({ setUser }) => {
 
     const { Title } = Typography;
 
+    window.addEventListener('popstate', (event) => {
+        setShow(true)
+    })
+
     const centerContainer = {
         position: 'absolute',
         left: '50%',
