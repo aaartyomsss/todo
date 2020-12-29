@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Card, Col, Row, Typography } from 'antd'
 
-
 const ToDoItem = ({ todoName, completeToDo, changeImportance, important }) => {
 
     const { Text } = Typography

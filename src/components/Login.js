@@ -4,6 +4,7 @@ import loginServices from '../services/loginServices'
 import todoServices from '../services/promises'
 import { useDispatch } from 'react-redux'
 import { initialState } from '../reducers/todoReducer'
+import { animations } from 'react-animation'
 
 const Login = ({ setUser }) => {
 
@@ -52,7 +53,8 @@ const Login = ({ setUser }) => {
         top: '50%',
         transform: 'translate(-50%, -50%)',
         paddingTop: '2em',
-        borderRadius: '15px'
+        borderRadius: '15px',
+        animation: animations.fadeIn,
     }
 
 

@@ -4,6 +4,7 @@ import { Route, Switch, Link, useHistory } from 'react-router-dom'
 import { Button, Typography, Divider, Row, Col } from 'antd'
 import Success from './Success'
 import Login from './Login'
+import { animations, easings } from 'react-animation'
 
 
 
@@ -31,7 +32,10 @@ const Home = ({ setUser }) => {
         border: '1px solid black',
         textAlign: 'center',
         padding: '4em',
-        display: show ? '' : 'none'
+        display: show ? '' : 'none',
+        animation: animations.fadeIn,
+        easing: easings.easeInSine,
+        duration: 1500
     }
 
     const buttons = {
@@ -64,11 +68,11 @@ const Home = ({ setUser }) => {
 
             <Switch>
                 <Route path='/registration'>
-                    <SignUp/>
+                    <SignUp />
                 </Route>
 
                 <Route path='/login'>
-                    <Login setUser={setUser}/>
+                    <Login setUser={setUser} />
                 </Route>
 
                 <Route path='/success'>

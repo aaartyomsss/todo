@@ -3,6 +3,7 @@ import { Form, Input, Button, message } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
 import loginServices from '../services/loginServices'
 import { useHistory } from 'react-router-dom'
+import { animations } from 'react-animation'
 
 const SignUp = () => {
 
@@ -29,7 +30,8 @@ const SignUp = () => {
         top: '50%',
         transform: 'translate(-50%, -50%)',
         paddingTop: '2em',
-        borderRadius: '15px'
+        borderRadius: '15px',
+        animation: animations.fadeIn
     }
 
     const [form] = useForm()

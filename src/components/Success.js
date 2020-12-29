@@ -1,5 +1,6 @@
 import { Result, Button } from 'antd'
 import React from 'react'
+import { animations } from 'react-animation'
 
 const Success = ({ btnText, title, subtitle, handleClick }) => {
 
@@ -7,7 +8,7 @@ const Success = ({ btnText, title, subtitle, handleClick }) => {
         position: 'absolute',
         left: '50%',
         top: '50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
     }
 
     return (
